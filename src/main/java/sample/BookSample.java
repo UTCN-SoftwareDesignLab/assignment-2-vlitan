@@ -1,4 +1,4 @@
-/*
+package sample;/*
  * Copyright (c) 2011 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -20,6 +20,7 @@ import com.google.api.services.books.BooksRequestInitializer;
 import com.google.api.services.books.Books.Volumes.List;
 import com.google.api.services.books.model.Volume;
 import com.google.api.services.books.model.Volumes;
+import sample.ClientCredentials;
 
 import java.io.IOException;
 import java.net.URLEncoder;

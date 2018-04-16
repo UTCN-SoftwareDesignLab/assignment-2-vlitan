@@ -1,4 +1,4 @@
-/*
+package sample;/*
  * Copyright (c) 2011 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -31,7 +31,7 @@ public class ClientCredentials {
     /** Value of the "API key" shown under "Simple API Access". */
     static final String API_KEY = "AIzaSyDNRjg71c7zFik3Ml6aeZ3zigASNpLoESI";
 //            "Enter API Key from https://code.google.com/apis/console/?api=books into API_KEY in "
-//                    + ClientCredentials.class;
+//                    + sample.ClientCredentials.class;
 
     static void errorIfNotSpecified() {
         if (API_KEY.startsWith("Enter ")) {
