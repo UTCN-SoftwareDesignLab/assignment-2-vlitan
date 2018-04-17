@@ -1,4 +1,4 @@
-package sample;
+package main.sample;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -36,7 +36,7 @@ public class PDFSample {
         //Setting the position for the line
         contentStream.newLineAtOffset(25, 500);
 
-        String text = "This is the sample document and we are adding content to it.";
+        String text = "This is the main.sample document and we are adding content to it.";
 
         //Adding text in the form of string
         contentStream.showText(text);

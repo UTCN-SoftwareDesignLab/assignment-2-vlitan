@@ -1,16 +1,14 @@
-package model;
+package main.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "books")
 public class Book {
     @Id
     @Column
-    public int id;
+    @GeneratedValue
+    public Integer id;
     @Column
     private String title;
     @Column
@@ -83,11 +81,11 @@ public class Book {
         this.description = description;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

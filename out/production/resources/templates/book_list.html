@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<!--     <p th:text="${ bookList }" /> -->
+
+<table>
+    <tbody>
+    <th>
+    <td >ID</td>
+    <td>title</td>
+    <td>genre</td>
+    </th>
+    <tr th:each="book : ${ bookList }">
+        <td th:text="${ book.id }">ID</td>
+        <td th:text="${ book.title }">title</td>
+        <td th:text="${ book.genre }">genre</td>
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -1,8 +1,8 @@
-package service;
+package main.service;
 
 import com.google.api.services.books.model.Volume;
-import model.Book;
-import model.builder.BookBuilder;
+import main.model.Book;
+import main.model.builder.BookBuilder;
 
 public final class BookMapper {
     public static Book from(Volume volume){

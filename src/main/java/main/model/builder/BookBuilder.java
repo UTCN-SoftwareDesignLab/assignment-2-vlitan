@@ -1,9 +1,9 @@
-package model.builder;
+package main.model.builder;
 
-import model.Book;
+import main.model.Book;
 
 public final class BookBuilder {
-    public int id = 0;
+    public Integer id = new Integer(0);
     private String title = "default";
     private String author = "default";
     private String genre = "default";
@@ -18,7 +18,7 @@ public final class BookBuilder {
         return new BookBuilder();
     }
 
-    public BookBuilder withId(int id) {
+    public BookBuilder withId(Integer id) {
         this.id = id;
         return this;
     }

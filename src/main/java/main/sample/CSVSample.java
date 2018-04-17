@@ -1,4 +1,4 @@
-package sample;
+package main.sample;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 
 public class CSVSample {
-    private static final String SAMPLE_CSV_FILE = "./sample.csv";
+    private static final String SAMPLE_CSV_FILE = "./main.sample.csv";
 
     public static void main(String[] args) throws IOException {
         try (
