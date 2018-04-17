@@ -11,6 +11,7 @@ public final class BookMapper {
                 .withTitle(volume.getVolumeInfo().getTitle())
                 .withDescription(volume.getVolumeInfo().getDescription())
                 .withGenre(volume.getVolumeInfo().getMainCategory())
+                .withPrice(volume.getSaleInfo().getRetailPrice().getAmount().intValue())//TODO revise this
                 .build();
     }
 }
