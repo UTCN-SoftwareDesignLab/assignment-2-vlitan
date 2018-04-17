@@ -9,8 +9,6 @@ import main.service.BookService;
 
 import java.security.Principal;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/book")
@@ -23,11 +21,10 @@ public class BookController {
     {
         System.out.println("[BookController] all request made");
 
-        List<Book> bookList = bookService.findAll();
+        List<Book> bookList = bookService.findByTitle("how I got happy");
         System.out.println(bookList.size());
         ModelAndView mav = new ModelAndView("book_list");
         mav.addObject("bookList", bookList);
-
         return mav;
     }
 }
