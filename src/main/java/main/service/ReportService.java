@@ -2,11 +2,10 @@ package main.service;
 
 import main.model.Book;
 
+import java.io.IOException;
 import java.util.List;
 
-public interface ReportService {
-    /*creates a report with a list of books in the given directory*/
-    public void generateReport(String path, String name, List<Book> books);
-    /*creates a report with a list of books in the current directory*/
-    public void generateReport(String name, List<Book> books);
+public interface ReportService{
+    /*creates a report with a list of books*/
+    public void generateReport(String name, List<Book> books)  throws IOException;
 }

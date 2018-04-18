@@ -1,19 +1,26 @@
 package main.model;
 
+import org.springframework.lang.NonNull;
+
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
+    @NonNull
+    private Integer id;
     @Column
+    @NonNull
     private String name;
     @Column
+    @Min(value = 14, message = "Age is below minium permited")
     private int age;
     @Column
     @Enumerated(EnumType.STRING)
+    @NonNull
     private Role role;
 
     @Override

@@ -4,7 +4,7 @@ import main.model.Role;
 import main.model.User;
 
 public final class UserBuilder {
-    private int id;
+    private Integer id;
     private String name;
     private int age;
     private Role role;
@@ -16,7 +16,7 @@ public final class UserBuilder {
         return new UserBuilder();
     }
 
-    public UserBuilder withId(int id) {
+    public UserBuilder withId(Integer id) {
         this.id = id;
         return this;
     }
@@ -34,10 +34,6 @@ public final class UserBuilder {
     public UserBuilder withRole(Role role) {
         this.role = role;
         return this;
-    }
-
-    public UserBuilder but() {
-        return anUser().withId(id).withName(name).withAge(age).withRole(role);
     }
 
     public User build() {

@@ -1,5 +1,6 @@
-package main.sample;
+package main.service;
 
+import main.model.Book;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -7,12 +8,13 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+
+public class PdfReportService implements ReportService {
 
 
-public class PDFSample {
-    public static void main (String args[]) throws IOException {
-
-
+    @Override
+    public void generateReport(String name, List<Book> books) throws IOException {//TODO add support for multiple pages
         //Creating PDF document object
         PDDocument document = new PDDocument();
 
@@ -35,23 +37,20 @@ public class PDFSample {
         //Setting the position for the line
         contentStream.newLineAtOffset(25, 725);
 
-        String text = "This is the main.sample document and we are adding content to it.";
-        for (int i = 0; i < 1000; i++){
-
-           contentStream.showText(text);
-           contentStream.newLine();
+        for (Book book : books){
+            contentStream.showText(book.toString());
+            contentStream.newLine();
         }
 
         contentStream.endText();
-        System.out.println("Content added");
-
         //Closing the content stream
         contentStream.close();
 
         //Saving the document
-        document.save(new File("new.pdf"));
+        document.save(new File(name + ".pdf"));
 
         //Closing the document
         document.close();
     }
+
 }

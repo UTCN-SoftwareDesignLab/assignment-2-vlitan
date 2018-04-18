@@ -29,11 +29,11 @@ package main.sample;/*
 public class ClientCredentials {
 
     /** Value of the "API key" shown under "Simple API Access". */
-    static final String API_KEY = "AIzaSyDNRjg71c7zFik3Ml6aeZ3zigASNpLoESI";
+    public static final String API_KEY = "AIzaSyDNRjg71c7zFik3Ml6aeZ3zigASNpLoESI";
 //            "Enter API Key from https://code.google.com/apis/console/?api=books into API_KEY in "
 //                    + main.sample.ClientCredentials.class;
 
-    static void errorIfNotSpecified() {
+    public static void errorIfNotSpecified() {
         if (API_KEY.startsWith("Enter ")) {
             System.err.println(API_KEY);
             System.exit(1);

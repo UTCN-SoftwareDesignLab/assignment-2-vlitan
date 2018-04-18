@@ -56,6 +56,7 @@ public class BookSample {
                 .build();
         // Set query string and filter only Google eBooks.
         System.out.println("Query: [" + query + "]");
+        System.out.println(query);
         List volumesList = books.volumes().list(query);
         volumesList.setFilter("ebooks");
 
@@ -162,6 +163,7 @@ public class BookSample {
             }
             try {
                 queryGoogleBooks(jsonFactory, query);
+
                 // Success!
                 return;
             } catch (IOException e) {

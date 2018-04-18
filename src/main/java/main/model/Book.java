@@ -1,24 +1,34 @@
 package main.model;
 
+import org.springframework.lang.NonNull;
+
+import javax.annotation.Nonnegative;
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "books")
 public class Book {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    @NonNull
     public Integer id;
     @Column
+    @NonNull
     private String title;
     @Column
+    @NonNull
     private String author;
     @Column
+    @NonNull
     private String genre;
     @Column
     private String description;
     @Column
+    @Nonnegative
     private int quantity;
     @Column
+    @Nonnegative
     private int price;
 
     @Override

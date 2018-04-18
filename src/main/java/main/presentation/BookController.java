@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import main.service.BookService;
+import main.service.BookServiceImpl;
 
 import java.security.Principal;
 import java.util.List;
@@ -14,13 +14,13 @@ import java.util.List;
 @RequestMapping("/book")
 public class BookController {
     @Autowired
-    BookService bookService;
+    BookServiceImpl bookService;
 
     @RequestMapping(value = "/{ff}", method = RequestMethod.GET)
     public ModelAndView listAll(@PathVariable("ff") String firstName, Principal principal)
     {
         System.out.println("[BookController] all request made");
-
+        System.out.println("[BookController] I got called with " +  firstName);
         List<Book> bookList = bookService.findByTitle("how I got happy");
         System.out.println(bookList.size());
         ModelAndView mav = new ModelAndView("book_list");
