@@ -41,6 +41,17 @@ public class Book {
                 "genre:" + this.getGenre();
     }
 
+    public Book(){}
+
+    public Book(@NonNull String title, @NonNull String author, @NonNull String genre, String description, int quantity, int price) {
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.description = description;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
 
     public int getPrice() {
         return price;

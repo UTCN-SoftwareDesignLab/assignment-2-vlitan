@@ -7,6 +7,7 @@ public final class UserBuilder {
     private Integer id;
     private String name;
     private int age;
+    private String password;
     private Role role;
 
     private UserBuilder() {
@@ -31,17 +32,19 @@ public final class UserBuilder {
         return this;
     }
 
+    public UserBuilder withPassword(String password) {
+        this.password = password;
+        return this;
+    }
+
     public UserBuilder withRole(Role role) {
         this.role = role;
         return this;
     }
 
     public User build() {
-        User user = new User();
+        User user = new User(name, age, password, role);
         user.setId(id);
-        user.setName(name);
-        user.setAge(age);
-        user.setRole(role);
         return user;
     }
 }
