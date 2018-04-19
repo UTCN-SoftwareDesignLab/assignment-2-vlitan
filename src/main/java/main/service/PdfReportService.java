@@ -12,9 +12,12 @@ import java.util.List;
 
 public class PdfReportService implements ReportService {
 
-
+/*TODO  the cureent encoding / font does not support scedilla and other characters
+* TODO add support for multiple pages
+* TODO add support for multi-line entry
+* */
     @Override
-    public void generateReport(String name, List<Book> books) throws IOException {//TODO add support for multiple pages
+    public void generateReport(String name, List<Book> books) throws IOException {
         //Creating PDF document object
         PDDocument document = new PDDocument();
 
@@ -29,7 +32,7 @@ public class PdfReportService implements ReportService {
         contentStream.beginText();
 
         //Setting the font to the Content stream
-        contentStream.setFont(PDType1Font.TIMES_ROMAN, 12);
+        contentStream.setFont(PDType1Font.COURIER, 12);
 
         //Setting the leading
         contentStream.setLeading(14.5f);

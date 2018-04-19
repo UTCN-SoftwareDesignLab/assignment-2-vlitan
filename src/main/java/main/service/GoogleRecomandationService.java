@@ -6,12 +6,16 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.books.Books;
 import com.google.api.services.books.BooksRequestInitializer;
 import com.google.api.services.books.model.Volume;
+import com.google.api.services.books.model.Volumes;
 import main.sample.ClientCredentials;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.List;
+import java.util.stream.Collectors;
 
+@Service//use @Resource(name="GoogleRecomandationService") when you whanna autowire this
 public class GoogleRecomandationService implements RecomandationService<Volume> {
     /**
      * Be sure to specify the name of your application. If the application name is {@code null} or
@@ -27,6 +31,9 @@ public class GoogleRecomandationService implements RecomandationService<Volume> 
                 .setApplicationName(APPLICATION_NAME)
                 .setGoogleClientRequestInitializer(new BooksRequestInitializer(ClientCredentials.API_KEY))
                 .build();
-        return (List<Volume>) books.volumes().list("intitle:"+title);
+        Volumes volumes = books.volumes().list("intitle:" + title).setFilter("ebooks").execute();
+
+        return volumes.getItems();
     }
+
 }
