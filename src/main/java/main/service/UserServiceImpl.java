@@ -14,6 +14,11 @@ public class UserServiceImpl implements UserService{
     private UserRepository userRepository;
 
     @Override
+    public Optional<User> login(String username, String password) {
+        return Optional.empty();
+    }
+
+    @Override
     public List<User> findAll() {
         return userRepository.findAll();
     }

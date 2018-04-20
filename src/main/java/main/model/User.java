@@ -27,11 +27,32 @@ public class User {
     @NonNull
     private Role role;
 
-    public User(@NonNull String name, @Min(value = 14, message = "Age is below minium permited") int age, @Pattern(regexp = "[a-z]{4}") String password, @NonNull Role role) {
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
+    }
+
+    @Column
+
+    private boolean isEnabled;
+
+    public User(@NonNull String name, @Min(value = 14, message = "Age is below minium permited") int age, @Pattern(regexp = "[a-z]{4}") String password, @NonNull Role role, boolean isEnabled) {
         this.name = name;
         this.age = age;
         this.password = password;
         this.role = role;
+        this.isEnabled = isEnabled;
     }
 
     public User(){}

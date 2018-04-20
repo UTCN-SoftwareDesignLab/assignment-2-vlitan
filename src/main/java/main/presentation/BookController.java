@@ -1,17 +1,11 @@
 package main.presentation;
 
 import main.model.Book;
-//import main.repository.MockData;
-import main.repository.BookRepository;
-import main.repository.MockData;
-import main.repository.UserRepository;
 import main.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import main.service.BookServiceImpl;
-
 import java.security.Principal;
 import java.util.List;
 

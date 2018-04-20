@@ -42,9 +42,17 @@ public final class UserBuilder {
         return this;
     }
 
+    public UserBuilder but() {
+        return anUser().withId(id).withName(name).withAge(age).withPassword(password).withRole(role);
+    }
+
     public User build() {
-        User user = new User(name, age, password, role);
+        User user = new User();
         user.setId(id);
+        user.setName(name);
+        user.setAge(age);
+        user.setPassword(password);
+        user.setRole(role);
         return user;
     }
 }

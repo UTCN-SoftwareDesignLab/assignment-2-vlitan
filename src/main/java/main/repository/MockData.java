@@ -19,11 +19,11 @@ public class MockData {
             new Book("book6", "author4", "genre3", "description3", 4, 3)
     ));
     public final static List<User> users = new ArrayList<>(Arrays.asList(
-            new User("admin", 16, "asdf",Role.ADMIN),
-            new User("user1", 16, "asdf",Role.USER),
-            new User("user2", 16, "asdf",Role.USER),
-            new User("user3", 16, "asdf",Role.USER)
+            new User("admin", 16, "asdf",Role.ADMIN, false),
+            new User("user1", 16, "asdf",Role.USER,false),
+            new User("user2", 16, "asdf",Role.USER,false),
+            new User("user3", 16, "asdf",Role.USER,false)
     ));
     public final static Book newBook = new Book("new book", "author4", "genre3", "description1", 4, 3);
-    public final static User newUser =  new User("newUser", 30, "adminAD12!@",Role.USER);
+    public final static User newUser =  new User("newUser", 30, "adminAD12!@",Role.USER, false);
 }

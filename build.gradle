@@ -5,6 +5,7 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+//apply plugin: 'war'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -41,8 +42,15 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-devtools")
+    compile("org.springframework.boot:spring-boot-starter-security")
 
-    compile ("com.github.ralfstuckert.pdfbox-layout:pdfbox2-layout:1.0.0")
+    compile group: 'org.springframework.security', name: 'spring-security-core', version: '4.0.0.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: '4.0.0.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-web', version: '5.0.0.M5'
+    compile group: 'org.springframework.security', name: 'spring-security-web', version: '3.0.4.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-crypto', version: '5.0.0.M5'
+    // https://mvnrepository.com/artifact/org.springframework.security/spring-security-core'
+    //compile ("com.github.ralfstuckert.pdfbox-layout:pdfbox2-layout:1.0.0")
 
     compile("org.hibernate.validator:hibernate-validator:6.0.9.Final")
     compile("org.hibernate.validator:hibernate-validator-cdi:6.0.9.Final")
