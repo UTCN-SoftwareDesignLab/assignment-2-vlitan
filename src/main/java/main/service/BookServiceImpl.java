@@ -20,7 +20,12 @@ public class BookServiceImpl implements BookService{
     @Override
     //decreases the quantity of a certain book by 1
     public Notification<Boolean> sell(Book book){
-        Optional<Book> foundBook = bookRepository.findById(book.getId());
+        return sellById(book.getId());
+    }
+
+    //decreases the quantity of a certain book by 1
+    public Notification<Boolean> sellById(int id){
+        Optional<Book> foundBook = bookRepository.findById(id);
         Notification<Boolean> sellNotification = new Notification<>();
         sellNotification.setResult(Boolean.FALSE);
         if (foundBook.isPresent()){
