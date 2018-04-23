@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Crud-ing on books</title>
+    <title>recommendation</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
@@ -9,14 +9,14 @@
     <tbody>
 
     <th>
-    <td>ID</td>
+    <td>Index</td>
     <td>title</td>
     <td>genre</td>
     <td>quantity</td>
     <td>price</td>
     </th>
     <tr th:each="book : ${ bookList }">
-        <td th:text="${ book.id }">ID</td>
+        <td th:text="${ book.id }">Index</td>
         <td th:text="${ book.title }">title</td>
         <td th:text="${ book.author }">author</td>
         <td th:text="${ book.genre }">genre</td>
@@ -24,33 +24,26 @@
         <td th:text="${ book.price }">price</td>
     </tr>
 
-    <form th:action="@{/adminBooks}" method="post" class="form-horizontal col-sm-6 col-sm-offset-3">
+    <form th:action="@{/recommendation}" method="post" class="form-horizontal col-sm-6 col-sm-offset-3">
 
         <div class="form-group">
-            <label for="id" class="col-sm-4 control-label">Id:</label>
-            <div class="col-sm-8">
-                <input type="text" name="id" id="id" class="form-control"/>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="author" class="col-sm-4 control-label">Author:</label>
-            <div class="col-sm-8">
-                <input type="text" name="author" id="author" class="form-control"/>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="title" class="col-sm-4 control-label">Title:</label>
+            <label for="title" class="col-sm-4 control-label">Search title:</label>
             <div class="col-sm-8">
                 <input type="text" name="title" id="title" class="form-control"/>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="genre" class="col-sm-4 control-label">Genre:</label>
+            <div class="col-sm-offset-4 col-sm-10">
+                <button class="btn btn-primary" type="submit" name="action" value="recommend">recommend</button>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="index" class="col-sm-4 control-label">Index:</label>
             <div class="col-sm-8">
-                <input type="text" name="genre" id="genre" class="form-control"/>
+                <input type="text" name="index" id="index" class="form-control"/>
             </div>
         </div>
 
@@ -69,20 +62,15 @@
         </div>
 
         <div class="form-group">
-            <div class="col-sm-offset-4 col-sm-10">
-                <button class="btn btn-primary" type="submit" name="action" value="findAll">list all</button>
+            <label for="genre" class="col-sm-4 control-label">Genre:</label>
+            <div class="col-sm-8">
+                <input type="text" name="genre" id="genre" class="form-control"/>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-offset-4 col-sm-10">
-                <button class="btn btn-primary" type="submit" name="action" value="save">save</button>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-sm-offset-4 col-sm-10">
-                <button class="btn btn-primary" type="submit" name="action" value="delete">delete (by id)</button>
+                <button class="btn btn-primary" type="submit" name="action" value="addSelected">add selected book (by index)</button>
             </div>
         </div>
 

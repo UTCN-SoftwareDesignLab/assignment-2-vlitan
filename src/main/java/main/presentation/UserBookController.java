@@ -20,7 +20,7 @@ public class UserBookController {
     @Autowired
     BookService bookService;
 
-    @RequestMapping(value = "/books", method = RequestMethod.POST, params = "action=searchByGenre")
+    @RequestMapping(value = "/userBooks", method = RequestMethod.POST, params = "action=searchByGenre")
     public ModelAndView listByGenre(@RequestParam("genre") String genre, Principal principal)
     {
         List<Book> bookList = bookService.findByGenre(genre);

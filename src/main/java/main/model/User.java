@@ -20,7 +20,7 @@ public class User {
     @Min(value = 14, message = "Age is below minium permited")
     private int age;
     @Column
-    @Pattern(regexp = "/^.{6,}$/")
+    @Pattern(regexp = "[a-z0-9A-Z]+")
     private String password;
     @Column
     @Enumerated(EnumType.STRING)
@@ -35,7 +35,7 @@ public class User {
         this.password = password;
     }
 
-    public User(@NonNull String name, @Min(value = 14, message = "Age is below minium permited") int age, @Pattern(regexp = "/^.{6,}$/") String password, @NonNull Role role) {
+    public User(@NonNull String name, @Min(value = 14, message = "Age is below minium permited") int age, @Pattern(regexp = "[a-z0-9A-Z]+") String password, @NonNull Role role) {
         this.name = name;
         this.age = age;
         this.password = password;
