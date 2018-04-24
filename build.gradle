@@ -29,7 +29,6 @@ dependencies {
     compile 'org.hibernate:hibernate-core:5.2.10.Final'
     compile 'javax.servlet:javax.servlet-api:3.1.0'
     //compile 'org.slf4j:slf4j-simple:1.7.7'
-    compile 'org.javassist:javassist:3.15.0-GA'
     compile 'mysql:mysql-connector-java:5.1.31'
     compile 'commons-dbcp:commons-dbcp:1.4'
     compile "org.apache.pdfbox:pdfbox:${pdfboxVersion}"
@@ -56,6 +55,7 @@ dependencies {
     compile("org.hibernate.validator:hibernate-validator-cdi:6.0.9.Final")
     compile("org.hibernate.validator:hibernate-validator-osgi:6.0.9.Final")
     compile("org.hibernate.validator:hibernate-validator-annotation-processor:6.0.9.Final")
+    testCompile "org.mockito:mockito-core:2.+"
     testCompile("junit:junit")
 }
 

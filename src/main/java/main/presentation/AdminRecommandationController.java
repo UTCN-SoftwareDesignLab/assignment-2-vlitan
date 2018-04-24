@@ -9,6 +9,7 @@ import main.service.BookService;
 import main.service.RecomandationService;
 import main.util.Notification;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,9 +24,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Controller
-public class AdminRecommandationController {
+public class AdminRecommandationController {//todo rethink to do this
 
     @Autowired
     BookService bookService;
@@ -33,7 +35,13 @@ public class AdminRecommandationController {
     @Autowired
     RecomandationService<Volume> recommendationService;
 
-    private List<Book> recommendedBooks = new ArrayList<>();
+    private String currentTitle;//TODO remove state
+
+    @RequestMapping(value = "/recommendation", method = RequestMethod.GET)
+    @Order(value = 1)
+    public String index() {
+        return "recommendation";
+    }
 
     @RequestMapping(value = "/recommendation", method = RequestMethod.POST, params = "action=addSelected")
     public String addBook(@RequestParam("index") String inIndex,
@@ -43,32 +51,52 @@ public class AdminRecommandationController {
         int index;
         int price;
         int quantity;
-        index = Integer.parseInt(inIndex);
+        try {
+            index = Integer.parseInt(inIndex);
+        }
+        catch (Exception e){
+            model.addAttribute("parseError", "The id selected is out of Range, please select another id within range");
+            return "book_recommendation";
+        }
+        try {
         price = Integer.parseInt(inPrice);
+        }
+        catch (Exception e){
+            return "redirect:/recommendation?priceParseError";
+        }
+        try {
         quantity = Integer.parseInt(inQuantity);
-        //TODO manage parse errors
-        Book selectedBook = recommendedBooks.get(index);
+        }
+        catch (Exception e){
+            return "redirect:/recommendation?quantityParseError";
+        }
+        Book selectedBook = null;
+        try {
+            selectedBook = recommendationService.recomendByTitle(currentTitle).stream().map(BookMapper::from).collect(Collectors.toList()).get(index);
+        } catch (GeneralSecurityException e) {
+            return "redirect:/recommendation?googleError";
+        } catch (IOException e) {
+           return "redirect:/recommendation?googleError";
+        }
         selectedBook.setQuantity(quantity);
         selectedBook.setPrice(price);
+
         bookService.save(selectedBook);
         return "book_recommendation";
     }
 
     @RequestMapping(value = "/recommendation", method = RequestMethod.POST, params = "action=recommend")
     public ModelAndView recommendBooks(@RequestParam("title") String title, Model model, HttpSession httpSession) {
+        List<Book> recommendedBooks = new ArrayList<>();
         try {
-            List<Volume> volumes = recommendationService.recomendByTitle(title);
-            recommendedBooks.clear();
-            for (Volume volume : volumes){
-                recommendedBooks.add(BookMapper.from(volume));
-            }
-            //recommendedBooks = recommendationService.recomendByTitle(title).stream().map(BookMapper::from).collect(Collectors.toList());
-        } catch (GeneralSecurityException e) {//TODO handle errors
-        //    e.printStackTrace();
+            recommendedBooks = recommendationService.recomendByTitle(title).stream().map(BookMapper::from).collect(Collectors.toList());
+            currentTitle = title;
+        } catch (GeneralSecurityException e) {
+            return new ModelAndView("redirect:/recommendation?googleError");
         } catch (IOException e) {
-          //  e.printStackTrace();
+            return new ModelAndView("redirect:/recommendation?googleError");
         }
-        recommendedBooks = setTemporaryIndex(recommendedBooks);
+        setTemporaryIndex(recommendedBooks);
         ModelAndView mav = new ModelAndView("book_recommendation");
         mav.addObject("bookList", recommendedBooks);
         return mav;

@@ -8,7 +8,6 @@ import org.springframework.context.annotation.ComponentScan;
 /*
 * TODO  validation (maybe in services)
 * TODO  proper error display
-* TODO  add "back" functionality
 * TODO  proper session handling (current user, redirect unknown requests)
 * TODO  tests!
 * TODO  other TODOs from the code. some of them really need to be fixed

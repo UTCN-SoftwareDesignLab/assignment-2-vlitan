@@ -4,11 +4,14 @@ import org.springframework.lang.NonNull;
 
 import javax.annotation.Nonnegative;
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "books")
 public class Book {
+    public static final int DESCRIPTION_LENGTH = 500;
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @NonNull
@@ -23,6 +26,7 @@ public class Book {
     @NonNull
     private String genre;
     @Column
+    @Size(min = 2, max = DESCRIPTION_LENGTH)
     private String description;
     @Column
     @Nonnegative

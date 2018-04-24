@@ -87,13 +87,18 @@
         </div>
 
 
-        <!--&lt;!&ndash; ALERTS &ndash;&gt;-->
-        <!--<div th:if="${param.error}" class="alert alert-danger" role="alert">-->
-        <!--Invalid username or password.-->
-        <!--</div>-->
-        <!--<div th:if="${param.logout}" class="alert alert-success" role="alert">-->
-        <!--You have been logged out.-->
-        <!--</div>-->
+        <div th:if="${param.idParseError}" class="alert alert-danger" role="alert">
+            id parse error
+        </div>
+        <div th:if="${param.priceParseError}" class="alert alert-danger" role="alert">
+            price parse error
+        </div>
+        <div th:if="${param.quantityParseError}" class="alert alert-danger" role="alert">
+            quantity parse error
+        </div>
+        <div th:if="${param.validationError}" class="alert alert-danger" role="alert">
+            invalid data
+        </div>
     </form>
 
     </tbody>

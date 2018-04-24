@@ -33,7 +33,6 @@ public class AdminController {
     @RequestMapping(value = "/adminView", method = RequestMethod.POST, params = "redirect=toRecommendation")
     public ModelAndView switchToRecommendation(Principal principal)
     {
-        System.out.println("git gut");
         return new ModelAndView("book_recommendation");
     }
 }

@@ -1,8 +1,20 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>recommendation</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8"/>
+    <title>Recommendation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <style>
+        form {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
 <table>
@@ -11,19 +23,19 @@
     <th>
     <td>Index</td>
     <td>title</td>
+    <td>author</td>
     <td>genre</td>
-    <td>quantity</td>
-    <td>price</td>
+
     </th>
     <tr th:each="book : ${ bookList }">
         <td th:text="${ book.id }">Index</td>
         <td th:text="${ book.title }">title</td>
         <td th:text="${ book.author }">author</td>
         <td th:text="${ book.genre }">genre</td>
-        <td th:text="${ book.quantity }">quantity</td>
-        <td th:text="${ book.price }">price</td>
     </tr>
 
+
+<div class="container">
     <form th:action="@{/recommendation}" method="post" class="form-horizontal col-sm-6 col-sm-offset-3">
 
         <div class="form-group">
@@ -62,28 +74,30 @@
         </div>
 
         <div class="form-group">
-            <label for="genre" class="col-sm-4 control-label">Genre:</label>
-            <div class="col-sm-8">
-                <input type="text" name="genre" id="genre" class="form-control"/>
-            </div>
-        </div>
-
-        <div class="form-group">
             <div class="col-sm-offset-4 col-sm-10">
                 <button class="btn btn-primary" type="submit" name="action" value="addSelected">add selected book (by index)</button>
             </div>
         </div>
 
+        <!-- ALERTS -->
+        <div th:if="${param.indexParseError}" class="alert alert-danger" role="alert">
+            Index parse error
+         </div>
+        <div th:if="${param.priceParseError}" class="alert alert-danger" role="alert">
+            Price parse error
+        </div>
+        <div th:if="${param.quantityParseError}" class="alert alert-danger" role="alert">
+            Quantity parse error
+        </div>
+        <div th:if="${param.invalidIndex}" class="alert alert-danger" role="alert">
+         Invalid index
+        </div>
+        <div th:if="${param.googleError}" class="alert alert-danger" role="alert">
+            Error at google headquarters
+        </div>
 
-        <!--&lt;!&ndash; ALERTS &ndash;&gt;-->
-        <!--<div th:if="${param.error}" class="alert alert-danger" role="alert">-->
-        <!--Invalid username or password.-->
-        <!--</div>-->
-        <!--<div th:if="${param.logout}" class="alert alert-success" role="alert">-->
-        <!--You have been logged out.-->
-        <!--</div>-->
     </form>
-
+</div>
     </tbody>
 </table>
 

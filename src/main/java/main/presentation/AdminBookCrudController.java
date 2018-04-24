@@ -43,6 +43,7 @@ public class AdminBookCrudController {
         //TODO handle parse errors
         bookService.save(BookBuilder.aBook()
                                     .withAuthor(author)
+                                    .withTitle(title)
                                     .withGenre(genre)
                                     .withPrice(price)
                                     .withQuantity(quantity)
