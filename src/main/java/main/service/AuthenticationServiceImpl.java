@@ -17,8 +17,9 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 
     @Override
     public Notification<User> loadByNameAndPassword(String username, String password) {
-        Optional<User> optionalUser = userRepository.findByNameAndPassword(username, encodePassword(password));
-        Notification<User> result = new Notification<>();//TODO bettern naming for this variable
+        String encodedPassword = encodePassword(password);
+        Optional<User> optionalUser = userRepository.findByNameAndPassword(username, encodedPassword);
+        Notification<User> result = new Notification<>();//TODO better naming for this variable
         if (optionalUser.isPresent()){
             result.setResult(optionalUser.get());
         }

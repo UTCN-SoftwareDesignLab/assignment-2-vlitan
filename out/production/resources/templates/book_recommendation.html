@@ -34,6 +34,10 @@
         <td th:text="${ book.genre }">genre</td>
     </tr>
 
+    <td>Errors</td>
+    <tr th:each="error : ${ errorList }">
+        <td th:text="${ error }">errors</td>
+    </tr>
 
 <div class="container">
     <form th:action="@{/recommendation}" method="post" class="form-horizontal col-sm-6 col-sm-offset-3">
@@ -100,6 +104,8 @@
 </div>
     </tbody>
 </table>
+
+
 
 </body>
 </html>

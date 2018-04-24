@@ -24,7 +24,7 @@ public class AdminBookCrudController {
     BookService bookService;
 
     @RequestMapping(value = "/adminBooks", method = RequestMethod.POST, params = "action=save")
-    public ModelAndView saveUser(@RequestParam("id") String inId,
+    public ModelAndView saveBook(@RequestParam("id") String inId,
                                  @RequestParam("author") String author,
                                  @RequestParam("title") String title,
                                  @RequestParam("genre") String genre,
@@ -52,7 +52,7 @@ public class AdminBookCrudController {
         return findAll(principal);
     }
     @RequestMapping(value = "/adminBooks", method = RequestMethod.POST, params = "action=delete")
-    public ModelAndView deleteUser(@RequestParam("id") String inId, Principal principal)
+    public ModelAndView deleteBook(@RequestParam("id") String inId, Principal principal)
     {
         int id;
         id = Integer.parseInt(inId);        //TODO handle parse errors

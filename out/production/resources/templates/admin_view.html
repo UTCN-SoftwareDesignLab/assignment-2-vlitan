@@ -8,7 +8,10 @@
 
 <body>
 
-
+<td>Errors</td>
+<tr th:each="error : ${ errorList }">
+    <td th:text="${ error }">errors</td>
+</tr>
 <form th:action="@{/adminView}" method="post" class="form-horizontal col-sm-6 col-sm-offset-3">
     <div class="form-group">
         <div class="col-sm-offset-4 col-sm-10">

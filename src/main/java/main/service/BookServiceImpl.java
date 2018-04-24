@@ -1,5 +1,6 @@
 package main.service;
 
+import main.model.validator.BookValidator;
 import main.util.Notification;
 import main.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import java.util.Optional;
 public class BookServiceImpl implements BookService{
     @Autowired
     BookRepository bookRepository;
+    @Autowired
+    BookValidator bookValidator;
     @Override
     public List<Book> findAll(){
         return bookRepository.findAll();

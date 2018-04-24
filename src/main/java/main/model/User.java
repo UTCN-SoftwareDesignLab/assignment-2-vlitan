@@ -9,38 +9,26 @@ import javax.validation.constraints.Pattern;
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @NonNull
     private Integer id;
     @Column
-    @NonNull
     private String name;
     @Column
-    @Min(value = 14, message = "Age is below minium permited")
     private int age;
     @Column
-    @Pattern(regexp = "[a-z0-9A-Z]+")
     private String password;
     @Column
-    @Enumerated(EnumType.STRING)
-    @NonNull
     private Role role;
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public User(@NonNull String name, @Min(value = 14, message = "Age is below minium permited") int age, @Pattern(regexp = "[a-z0-9A-Z]+") String password, @NonNull Role role) {
+    public User(String name, int age, String password, Role role) {
         this.name = name;
         this.age = age;
         this.password = password;
         this.role = role;
     }
+
 
     public User(){}
 
@@ -52,6 +40,16 @@ public class User {
                 "age:" + this.getAge() + " " +
                 "role:" + this.getRole();
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
 
     public Integer getId() {
         return id;

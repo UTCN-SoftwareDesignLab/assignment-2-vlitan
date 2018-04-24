@@ -29,7 +29,15 @@
         <td th:text="${ user.name }">name</td>
         <td th:text="${ user.role }">role</td>
     </tr>
-<form th:action="@{/crudUsers}" method="post" class="form-horizontal col-sm-6 col-sm-offset-3">
+    <th>
+    <td>Errors</td>
+    <th>
+    <tr th:each="error : ${ errorList }">
+        <td th:text="${ error }">errors</td>
+    </tr>
+
+
+    <form th:action="@{/crudUsers}" method="post" class="form-horizontal col-sm-6 col-sm-offset-3">
 
     <div class="form-group">
         <label for="id" class="col-sm-4 control-label">Id:</label>
@@ -88,19 +96,19 @@
     </div>
 
 
-    <!-- ALERTS -->
-    <div th:if="${param.idParseError}" class="alert alert-danger" role="alert">
-        id parse error
-    </div>
-    <div th:if="${param.ageParseError}" class="alert alert-danger" role="alert">
-        age parse error
-    </div>
-    <div th:if="${param.roleParseError}" class="alert alert-danger" role="alert">
-        role parse error
-    </div>
-    <div th:if="${param.validationError}" class="alert alert-danger" role="alert">
-        invalid data
-    </div>
+    <!--&lt;!&ndash; ALERTS &ndash;&gt;-->
+    <!--<div th:if="${param.idParseError}" class="alert alert-danger" role="alert">-->
+        <!--id parse error-->
+    <!--</div>-->
+    <!--<div th:if="${param.ageParseError}" class="alert alert-danger" role="alert">-->
+        <!--age parse error-->
+    <!--</div>-->
+    <!--<div th:if="${param.roleParseError}" class="alert alert-danger" role="alert">-->
+        <!--role parse error-->
+    <!--</div>-->
+    <!--<div th:if="${param.validationError}" class="alert alert-danger" role="alert">-->
+        <!--invalid data-->
+    <!--</div>-->
 
 </form>
 </table>

@@ -13,10 +13,6 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UserRepository userRepository;
 
-    @Override
-    public Optional<User> login(String username, String password) {
-        return Optional.empty();
-    }
 
     @Override
     public List<User> findAll() {
@@ -30,6 +26,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void save(User user) {
+        user.setPassword(AuthenticationServiceImpl.encodePassword(user.getPassword()));
         userRepository.save(user);
     }
 

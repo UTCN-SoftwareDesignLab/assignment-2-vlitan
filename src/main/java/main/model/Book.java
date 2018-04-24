@@ -14,25 +14,19 @@ public class Book {
     public static final int DESCRIPTION_LENGTH = 500;
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @NonNull
     public Integer id;
     @Column
-    @NonNull
     private String title;
     @Column
-    @NonNull
     private String author;
     @Column
-    @NonNull
     private String genre;
+
     @Column
-    @Size(min = 2, max = DESCRIPTION_LENGTH)
     private String description;
     @Column
-    @Nonnegative
     private int quantity;
     @Column
-    @Nonnegative
     private int price;
 
     @Override
@@ -47,7 +41,7 @@ public class Book {
 
     public Book(){}
 
-    public Book(@NonNull String title, @NonNull String author, @NonNull String genre, String description, int quantity, int price) {
+    public Book(String title, String author, String genre, String description, int quantity, int price) {
         this.title = title;
         this.author = author;
         this.genre = genre;
@@ -55,7 +49,6 @@ public class Book {
         this.quantity = quantity;
         this.price = price;
     }
-
 
     public int getPrice() {
         return price;

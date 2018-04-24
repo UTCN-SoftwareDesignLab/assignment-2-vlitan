@@ -24,6 +24,11 @@
         <td th:text="${ book.price }">price</td>
     </tr>
 
+    <td>Errors</td>
+    <tr th:each="error : ${ errorList }">
+        <td th:text="${ error }">errors</td>
+    </tr>
+
     <form th:action="@{/userBooks}" method="post" class="form-horizontal col-sm-6 col-sm-offset-3">
 
         <div class="form-group">
