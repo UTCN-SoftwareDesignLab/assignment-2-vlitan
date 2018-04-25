@@ -2,6 +2,7 @@ package main.service;
 
 import main.model.User;
 import main.repository.UserRepository;
+import main.util.Notification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,29 +26,46 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void save(User user) {
+    public Notification<Boolean> save(User user) {
+        Notification<Boolean> saveNotification = new Notification<>();
         String plainPassword = user.getPassword();
         user.setPassword(AuthenticationServiceImpl.encodePassword(plainPassword));
         if (userRepository.findByNameAndPassword(user.getName(), user.getPassword()).isPresent()){
-            //TODO handle "already existing" case
+            saveNotification.addError("Already existing user with name " + user.getName() + " and same password");
+            saveNotification.setResult(Boolean.FALSE);
         }
         else {
-            userRepository.save(user);
+            try {
+                userRepository.save(user);
+                saveNotification.setResult(Boolean.TRUE);
+            }
+            catch (Exception e){
+                saveNotification.addError("Something went bad while saving");
+                saveNotification.setResult(Boolean.FALSE);
+            }
         }
         user.setPassword(plainPassword);
+        return saveNotification;
     }
 
-    @Override
-    public void delete(User user) {
-    }
 
     @Override
-    public void deleteById(Integer id) {
+    public Notification<Boolean> deleteById(Integer id) {
+        Notification<Boolean> deleteNotification = new Notification<>();
         if (id.intValue()>0){
-            userRepository.deleteById(id);
+            try{
+                userRepository.deleteById(id);
+                deleteNotification.setResult(Boolean.TRUE);
+            }
+            catch (Exception e){
+                deleteNotification.setResult(Boolean.FALSE);
+                deleteNotification.addError("Something went bad while deleting");
+            }
         }
         else{
-            //tODO manage error
+            deleteNotification.setResult(Boolean.TRUE);
+            deleteNotification.addError("Id cannot be negative");
         }
+        return deleteNotification;
     }
 }

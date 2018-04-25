@@ -6,6 +6,7 @@ import main.model.builder.UserBuilder;
 import main.model.validator.UserValidator;
 import main.service.AuthenticationServiceImpl;
 import main.service.UserService;
+import main.util.Notification;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.tomcat.jni.Error;
 import org.omg.CORBA.ExceptionList;
@@ -42,7 +43,10 @@ public class AdminUserCrudController {
     public String saveUser(@Validated @ModelAttribute("user") User user, BindingResult bindingResult, Model model)
     {
         if (!bindingResult.hasErrors()){
-            userService.save(user);
+            Notification<Boolean> saveNotification = userService.save(user);
+            if (saveNotification.hasErrors()){
+                model.addAttribute("message", saveNotification.getFormattedErrors());
+            }
             updateUsersList(model);
         }
         return "crud_user";
@@ -50,7 +54,10 @@ public class AdminUserCrudController {
     @RequestMapping(value = "/crudUsers", method = RequestMethod.POST, params = "action=delete")
     public String deleteUser(@RequestParam("id") Integer id, Model model)
     {
-        userService.deleteById(id);
+        Notification<Boolean> deleteNotification = userService.deleteById(id);
+        if (deleteNotification.hasErrors()){
+            model.addAttribute("message", deleteNotification.getFormattedErrors());
+        }
         updateUsersList(model);
         model.addAttribute("user", new User());
         return "crud_user";

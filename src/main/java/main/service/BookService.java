@@ -15,8 +15,6 @@ public interface BookService {
     public List<Book> findByQuantity(int quantity);
     public List<Book> findByGenre(String genre);
     public List<Book> findByAuthor(String author);
-    //NOTE this also does update internally
-    public void save(Book book);
-    public void delete(Book book);
-    public void deleteById(Integer id);
+    public Notification<Boolean>  save(Book book);//NOTE this also does update internally
+    public Notification<Boolean>  deleteById(Integer id);
 }

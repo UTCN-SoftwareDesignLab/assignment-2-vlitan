@@ -8,6 +8,7 @@ import main.model.builder.UserBuilder;
 import main.service.AuthenticationServiceImpl;
 import main.service.BookService;
 import main.service.UserService;
+import main.util.Notification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,7 +45,10 @@ public class AdminBookCrudController {
     public String saveBook(@Validated @ModelAttribute("book") Book book, BindingResult bindingResult, Model model)
     {
         if (!bindingResult.hasErrors()){
-            bookService.save(book);
+            Notification<Boolean> saveNotification = bookService.save(book);
+            if (saveNotification.hasErrors()){
+                model.addAttribute("message", saveNotification.getFormattedErrors());
+            }
             updateBookList(model);
         }
         return "admin_books";
@@ -52,7 +56,10 @@ public class AdminBookCrudController {
     @RequestMapping(value = "/adminBooks", method = RequestMethod.POST, params = "action=delete")
     public String deleteBook(@RequestParam("id") Integer id, Model model)
     {
-        bookService.deleteById(id);
+        Notification<Boolean> deleteNotification = bookService.deleteById(id);
+        if (deleteNotification.hasErrors()){
+            model.addAttribute("message", deleteNotification.getFormattedErrors());
+        }
         updateBookList(model);
         model.addAttribute("book", new Book());
         return "admin_books";

@@ -27,61 +27,45 @@ public class UserBookController {
     }
 
     @RequestMapping(value = "/userBooks", method = RequestMethod.POST, params = "action=searchByGenre")
-    public ModelAndView listByGenre(@RequestParam("genre") String genre, Principal principal)
-    {
-        List<Book> bookList = bookService.findByGenre(genre);
-        ModelAndView mav = new ModelAndView("user_books");
-        mav.addObject("bookList", bookList);
-        return mav;
+    public String listByGenre(@RequestParam("genre") String genre, Model model) {
+        updateBookList(model, bookService.findByGenre(genre));
+        return "user_books";
     }
-    @RequestMapping(value = "/books", method = RequestMethod.POST, params = "action=searchByAuthor")
-    public ModelAndView listByAuthor(@RequestParam("author") String author, Principal principal)
-    {
-        List<Book> bookList = bookService.findByAuthor(author);
-        ModelAndView mav = new ModelAndView("user_books");
-        mav.addObject("bookList", bookList);
-        return mav;
+    @RequestMapping(value = "/userBooks", method = RequestMethod.POST, params = "action=searchByAuthor")
+    public String listByAuthor(@RequestParam("author") String author, Model model) {
+        updateBookList(model, bookService.findByAuthor(author));
+        return "user_books";
     }
-    @RequestMapping(value = "/books", method = RequestMethod.POST, params = "action=searchByTitle")
-    public ModelAndView listByTitle(@RequestParam("title") String title, Principal principal) {
-        List<Book> bookList = bookService.findByTitle(title);
-        ModelAndView mav = new ModelAndView("user_books");
-        mav.addObject("bookList", bookList);
-        return mav;
+    @RequestMapping(value = "/userBooks", method = RequestMethod.POST, params = "action=searchByTitle")
+    public String listByTitle(@RequestParam("title") String title, Model model) {
+        updateBookList(model, bookService.findByTitle(title));
+        return "user_books";
     }
 
-    @RequestMapping(value = "/books", method = RequestMethod.POST, params = "action=findAll")
-    public ModelAndView listAll(Principal principal) {
-        List<Book> bookList = bookService.findAll();
-        ModelAndView mav = new ModelAndView("user_books");
-        mav.addObject("bookList", bookList);
-        return mav;
+    @RequestMapping(value = "/userBooks", method = RequestMethod.POST, params = "action=findAll")
+    public String listAll(Model model) {
+        updateBookList(model, bookService.findAll());
+        return "user_books";
     }
 
-    @RequestMapping(value = "/books", method = RequestMethod.POST, params = "action=sellSelected")
-    public ModelAndView sellById(@RequestParam("id") String inId, Principal principal)
+    private void updateBookList(Model model, List<Book> bookList) {
+        model.addAttribute("bookList", bookList);
+    }
+
+    @RequestMapping(value = "/userBooks", method = RequestMethod.POST, params = "action=sellSelected")
+    public String sellById(@RequestParam("id") Integer id, Model model)
     {
-        int id = -1;
-        String formtedErrors = "";
-        Notification<Boolean> sellNotification;
-        try{
-            id = Integer.parseInt(inId);
-        }
-        catch (Exception e){
-            formtedErrors += "Cannot convert " + inId + " to an integer\n";
-        }
-        if (formtedErrors.isEmpty()) {
+        Notification<Boolean> sellNotification = new Notification<Boolean>();
+        if (id != null) {
             sellNotification = bookService.sellById(id);
-            if (sellNotification.hasErrors()) {
-                formtedErrors += sellNotification.getFormattedErrors();
-            }
         }
-
-        if (!formtedErrors.isEmpty()){
-            System.out.println("errors to be displayed in gui:\n" + formtedErrors); //TODO display errors properly
+        else{
+            sellNotification.addError("id is null");
         }
-     //   ModelAndView mav = new ModelAndView("user_books");
-        return listAll(principal);//TODO is this ok?? rethink this.. I think it is not ok
-        //it should be fixed in a spring-ie way
+        if (sellNotification.hasErrors()) {
+            model.addAttribute("message", sellNotification.getFormattedErrors());
+        }
+        updateBookList(model, bookService.findAll());
+        return "user_books";
     }
 }

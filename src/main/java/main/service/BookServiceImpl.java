@@ -33,8 +33,7 @@ public class BookServiceImpl implements BookService{
         sellNotification.setResult(Boolean.FALSE);
         if (foundBook.isPresent()){
             Book soldBook = foundBook.get();
-            soldBook.setQuantity(soldBook.getQuantity() - 1);
-            if (soldBook.getQuantity() >= 0) {
+            if (soldBook.getQuantity() > 0) {
                 this.save(soldBook);
                 sellNotification.setResult(Boolean.TRUE);
             }
@@ -69,20 +68,41 @@ public class BookServiceImpl implements BookService{
     }
     @Override
     //NOTE this also does update internally
-    public void save(Book book){
-        bookRepository.save(book);
+    public Notification<Boolean> save(Book book){
+        Notification<Boolean> saveNotification = new Notification<>();
+        try {
+            bookRepository.save(book);
+            saveNotification.setResult(Boolean.TRUE);
+        }
+        catch (Exception e){
+            saveNotification.addError("Something went bad while saving");
+            saveNotification.setResult(Boolean.FALSE);
+        }
+        return saveNotification;
     }
+
     @Override
-    public void delete(Book book){
-        bookRepository.delete(book);
-    }
-    @Override
-    public void deleteById(Integer id){
-        if (id > 0){
-            bookRepository.deleteById(id);
+    public Notification<Boolean> deleteById(Integer id){
+        Notification<Boolean> deleteNotification = new Notification<>();
+        if (id == null){
+            deleteNotification.setResult(Boolean.FALSE);
+            deleteNotification.addError("Null id");
+            return deleteNotification;
+        }
+        if (id.intValue()>0){
+            try{
+                bookRepository.deleteById(id);
+                deleteNotification.setResult(Boolean.TRUE);
+            }
+            catch (Exception e){
+                deleteNotification.setResult(Boolean.FALSE);
+                deleteNotification.addError("Something went bad while deleting");
+            }
         }
         else{
-            //TODO
+            deleteNotification.setResult(Boolean.TRUE);
+            deleteNotification.addError("Id cannot be negative");
         }
+        return deleteNotification;
     }
 }
