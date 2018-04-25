@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Controller
-public class AdminRecommandationController {//todo rethink to do this
+public class AdminRecommendationController {//todo rethink to do this
 
     @Autowired
     BookService bookService;

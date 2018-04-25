@@ -8,5 +8,4 @@ import org.springframework.dao.DataAccessException;
 
 public interface AuthenticationService {
     public Notification<User> loadByNameAndPassword(String username, String password);
-    public Notification<Boolean> register(User user);
 }

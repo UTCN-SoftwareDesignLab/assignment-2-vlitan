@@ -1,6 +1,7 @@
 package main.util;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultFetchException extends RuntimeException {
     private final List<String> errors;
@@ -12,11 +13,6 @@ public class ResultFetchException extends RuntimeException {
 
     @Override
     public String toString() {//TODO inspect this. streams dont seem to work in the spring, check again in summer
-        //return errors.stream().map(Object::toString).collect(Collectors.joining(",")) + super.toString();
-        String result = "";
-        for (String error : errors){
-            result += error + ",";
-        }
-        return result + super.toString();
+        return errors.stream().map(Object::toString).collect(Collectors.joining(",")) + super.toString();
     }
 }

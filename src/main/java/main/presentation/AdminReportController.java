@@ -15,10 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Controller
-public class AdminReportController {//TODO use an error List rather than concatenating strings like a caveman
+public class AdminReportController {
     //TODO use a dropdown instead of a textBox for report type input
     @Autowired
     ReportServiceFactory reportServiceFactory;
@@ -38,30 +42,30 @@ public class AdminReportController {//TODO use an error List rather than concate
     @RequestMapping(value = "/adminReports", method = RequestMethod.POST, params = "action=generate")
     public String login(@RequestParam("path") String path, @RequestParam("type") String type, Model model, HttpSession httpSession) {
         ReportType reportType = ReportType.NONE;
-        String formatedError = "";
+        List<String> errors = new ArrayList<>();
         try{
             reportType = ReportType.valueOf(type);
         }
         catch (Exception e){
-            formatedError += "No such report type exists\n";
+            errors.add("No such report type exists\n");
         }
         Optional<ReportService> reportService = reportServiceFactory.getReportService(reportType);
         if (reportService.isPresent()){
             try {
                 reportService.get().generateReport(path, bookService.findByQuantity(0));
             } catch (IOException e) {
-                formatedError += "Error while opening or creating the file\n";
+                errors.add("Error while opening or creating the file\n");
             }
         }
         else{
-            formatedError += "No such service available\n";
+            errors.add("No such service available\n");
         }
 
-        if (formatedError.isEmpty()){
+        if (errors.isEmpty()){
             model.addAttribute("message", "Report created!\n");
         }
         else{
-            model.addAttribute("message", "Report not created! Something went wrong:\n" + formatedError);
+            model.addAttribute("message", "Report not created! Something went wrong:\n" + errors.stream().collect(Collectors.joining("\n")));
         }
         return "admin_reports";
     }

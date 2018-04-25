@@ -29,15 +29,6 @@ public class AuthenticationServiceImpl implements AuthenticationService{
         return result;
     }
 
-    @Override
-    public Notification<Boolean> register(User user) {//TODO consider propper validation
-        user.setPassword(encodePassword(user.getPassword()));
-        userRepository.save(user);
-        Notification<Boolean> result = new Notification<>();
-        result.setResult(Boolean.TRUE);//TODO remove mock
-        return (result);
-    }
-
     public static String encodePassword(String password) {//TODO add this into a separate service
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
