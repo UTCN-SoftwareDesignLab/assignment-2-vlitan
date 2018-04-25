@@ -26,7 +26,7 @@ public class BookServiceTest {
     public void testFindById(){
         when(bookRepository.findById(1)).thenReturn(Optional.of(BookBuilder.aBook().withId(new Integer(1)).build()));
 
-       Assert.assertEquals(bookRepository.findById(1).get().getId().intValue(), 1);
+       Assert.assertEquals(bookService.findById(1).get().getId().intValue(), 1);
     }
 
 }

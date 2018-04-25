@@ -35,6 +35,7 @@ public class Book {
     @NonNull
     private int price;
 
+
     public Book(@NonNull String title, @NonNull String author, @NonNull String genre, String description, @NonNull int quantity, @NonNull int price) {
         this.title = title;
         this.author = author;
