@@ -30,7 +30,7 @@ public class LoginController {
     @Autowired
     AuthenticationService authenticationService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = {"/login", "/"}, method = RequestMethod.GET)
     @Order(value = 1)
     public String index() {
         return "login";
@@ -44,6 +44,7 @@ public class LoginController {
             return "redirect:/login?error";
         }
         else{
+            httpSession.setAttribute("userRole", userNotification.getResult().getRole());
             return "redirect:" + roleToViewMap.get(userNotification.getResult().getRole());
         }
     }

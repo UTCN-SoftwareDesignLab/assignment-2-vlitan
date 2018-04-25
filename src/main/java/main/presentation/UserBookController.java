@@ -5,6 +5,7 @@ import main.service.BookService;
 import main.util.Notification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +20,11 @@ import java.util.Optional;
 public class UserBookController {
     @Autowired
     BookService bookService;
+
+    @RequestMapping(value = "user_books", method = RequestMethod.GET)
+    public String index(Model model){
+        return "user_books";
+    }
 
     @RequestMapping(value = "/userBooks", method = RequestMethod.POST, params = "action=searchByGenre")
     public ModelAndView listByGenre(@RequestParam("genre") String genre, Principal principal)

@@ -1,5 +1,7 @@
 package main.presentation;
 
+import main.model.Book;
+import main.model.Role;
 import main.service.BookService;
 import main.service.ReportService;
 import main.service.ReportServiceFactory;
@@ -23,6 +25,16 @@ public class AdminReportController {//TODO use an error List rather than concate
 
     @Autowired
     BookService bookService;
+    @RequestMapping(value = "admin_reports", method = RequestMethod.GET)
+    public String index(Model model, HttpSession httpSession){
+        if (Role.valueOf(httpSession.getAttribute("userRole").toString()) == Role.ADMIN) {
+            return "admin_reports";
+        }
+        else{
+            return "redirect:/login";
+        }
+    }
+
     @RequestMapping(value = "/adminReports", method = RequestMethod.POST, params = "action=generate")
     public String login(@RequestParam("path") String path, @RequestParam("type") String type, Model model, HttpSession httpSession) {
         ReportType reportType = ReportType.NONE;

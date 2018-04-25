@@ -28,7 +28,12 @@ public class UserServiceImpl implements UserService{
     public void save(User user) {
         String plainPassword = user.getPassword();
         user.setPassword(AuthenticationServiceImpl.encodePassword(plainPassword));
-        userRepository.save(user);
+        if (userRepository.findByNameAndPassword(user.getName(), user.getPassword()).isPresent()){
+            //TODO handle "already existing" case
+        }
+        else {
+            userRepository.save(user);
+        }
         user.setPassword(plainPassword);
     }
 

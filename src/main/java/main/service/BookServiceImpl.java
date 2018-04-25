@@ -78,6 +78,11 @@ public class BookServiceImpl implements BookService{
     }
     @Override
     public void deleteById(Integer id){
-        bookRepository.deleteById(id);
+        if (id > 0){
+            bookRepository.deleteById(id);
+        }
+        else{
+            //TODO
+        }
     }
 }

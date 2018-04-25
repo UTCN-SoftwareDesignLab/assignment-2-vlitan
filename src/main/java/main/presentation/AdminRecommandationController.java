@@ -2,6 +2,7 @@ package main.presentation;
 
 import com.google.api.services.books.model.Volume;
 import main.model.Book;
+import main.model.Role;
 import main.model.User;
 import main.model.builder.BookBuilder;
 import main.service.BookMapper;
@@ -37,39 +38,22 @@ public class AdminRecommandationController {//todo rethink to do this
 
     private String currentTitle;//TODO remove state
 
-    @RequestMapping(value = "/recommendation", method = RequestMethod.GET)
+    @RequestMapping(value = "/book_recommendation", method = RequestMethod.GET)
     @Order(value = 1)
-    public String index() {
-        return "recommendation";
+    public String index(HttpSession httpSession) {
+        if (Role.valueOf(httpSession.getAttribute("userRole").toString()) == Role.ADMIN) {
+            return "/book_recommendation";
+        }
+        else{
+            return "redirect:/login";
+        }
     }
 
     @RequestMapping(value = "/recommendation", method = RequestMethod.POST, params = "action=addSelected")
-    public String addBook(@RequestParam("index") String inIndex,
-                          @RequestParam("price") String inPrice,
-                          @RequestParam("quantity") String inQuantity,
-                          Model model, HttpSession httpSession) {
-        int index;
-        int price;
-        int quantity;
-        try {
-            index = Integer.parseInt(inIndex);
-        }
-        catch (Exception e){
-            model.addAttribute("parseError", "The id selected is out of Range, please select another id within range");
-            return "book_recommendation";
-        }
-        try {
-        price = Integer.parseInt(inPrice);
-        }
-        catch (Exception e){
-            return "redirect:/recommendation?priceParseError";
-        }
-        try {
-        quantity = Integer.parseInt(inQuantity);
-        }
-        catch (Exception e){
-            return "redirect:/recommendation?quantityParseError";
-        }
+    public String addBook(@RequestParam("index") int index,
+                          @RequestParam("price") int price,
+                          @RequestParam("quantity") int quantity,
+                          Model model) {
         Book selectedBook = null;
         try {
             selectedBook = recommendationService.recomendByTitle(currentTitle).stream().map(BookMapper::from).collect(Collectors.toList()).get(index);

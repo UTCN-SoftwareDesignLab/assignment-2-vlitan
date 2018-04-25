@@ -16,20 +16,36 @@ public class Book {
     @GeneratedValue(strategy=GenerationType.AUTO)
     public Integer id;
     @Column
+    @NonNull
     private String title;
     @Column
+    @NonNull
     private String author;
     @Column
+    @NonNull
     private String genre;
-
     @Column
     private String description;
     @Column
+    @Nonnegative
+    @NonNull
     private int quantity;
     @Column
+    @Nonnegative
+    @NonNull
     private int price;
 
+    public Book(@NonNull String title, @NonNull String author, @NonNull String genre, String description, @NonNull int quantity, @NonNull int price) {
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.description = description;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
     @Override
+
     public String toString(){
         return "id:" + this.getId() + " " +
                 "title:" + this.getTitle() + " " +
@@ -41,14 +57,6 @@ public class Book {
 
     public Book(){}
 
-    public Book(String title, String author, String genre, String description, int quantity, int price) {
-        this.title = title;
-        this.author = author;
-        this.genre = genre;
-        this.description = description;
-        this.quantity = quantity;
-        this.price = price;
-    }
 
     public int getPrice() {
         return price;

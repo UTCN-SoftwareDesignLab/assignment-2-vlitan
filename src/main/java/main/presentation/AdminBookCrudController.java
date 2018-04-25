@@ -11,11 +11,15 @@ import main.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.List;
 
@@ -25,55 +29,46 @@ public class AdminBookCrudController {
     BookService bookService;
 
     @RequestMapping(value = "admin_books", method = RequestMethod.GET)
-    public String index(Model model){
-        model.addAttribute("book", new Book());
-        return "admin_books";
+    public String index(Model model, HttpSession httpSession){
+        if (Role.valueOf(httpSession.getAttribute("userRole").toString()) == Role.ADMIN) {
+            model.addAttribute("book", new Book());
+            return "admin_books";
+        }
+        else{
+            return "redirect:/login";
+        }
     }
 
 
     @RequestMapping(value = "/adminBooks", method = RequestMethod.POST, params = "action=save")
-    public ModelAndView saveBook(@RequestParam("id") String inId,
-                                 @RequestParam("author") String author,
-                                 @RequestParam("title") String title,
-                                 @RequestParam("genre") String genre,
-                                 @RequestParam("price") String inPrice,
-                                 @RequestParam("quantity") String inQuantity,
-
-                                 Principal principal)
+    public String saveBook(@Validated @ModelAttribute("book") Book book, BindingResult bindingResult, Model model)
     {
-        int id;
-        int price;
-        int quantity;
-
-        id = Integer.parseInt(inId);
-        price = Integer.parseInt(inPrice);
-        quantity = Integer.parseInt(inQuantity);
-        //TODO handle parse errors
-        bookService.save(BookBuilder.aBook()
-                                    .withAuthor(author)
-                                    .withTitle(title)
-                                    .withGenre(genre)
-                                    .withPrice(price)
-                                    .withQuantity(quantity)
-                                    .withId(id)
-                                    .build());
-        return findAll(principal);
+        if (!bindingResult.hasErrors()){
+            bookService.save(book);
+            updateBookList(model);
+        }
+        return "admin_books";
     }
     @RequestMapping(value = "/adminBooks", method = RequestMethod.POST, params = "action=delete")
-    public ModelAndView deleteBook(@RequestParam("id") String inId, Principal principal)
+    public String deleteBook(@RequestParam("id") Integer id, Model model)
     {
-        int id;
-        id = Integer.parseInt(inId);        //TODO handle parse errors
         bookService.deleteById(id);
-        return findAll(principal);
+        updateBookList(model);
+        model.addAttribute("book", new Book());
+        return "admin_books";
     }
     @RequestMapping(value = "/adminBooks", method = RequestMethod.POST, params = "action=findAll")
-    public ModelAndView findAll(Principal principal)
+    public String findAll(Model model)
     {
-        List<Book> books = bookService.findAll();
-        ModelAndView mav = new ModelAndView("admin_books");
-        mav.addObject("bookList", books);
-        return mav;
+        updateBookList(model);
+        model.addAttribute("book", new Book());
+        return "admin_books";
     }
+
+    private void updateBookList(Model model) {
+        List<Book> books = bookService.findAll();
+        model.addAttribute("bookList", books);
+    }
+
 
 }
