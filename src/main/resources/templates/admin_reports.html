@@ -5,10 +5,6 @@
     <title>Admin report generator</title>
 </head>
 <body>
-<td>Errors</td>
-<tr th:each="error : ${ errorList }">
-    <td th:text="${ error }">errors</td>
-</tr>
 
 <form th:action="@{/adminReports}" method="post" class="form-horizontal col-sm-6 col-sm-offset-3">
 
@@ -30,14 +26,9 @@
             <button class="btn btn-primary" type="submit" name="action" value="generate">generate</button>
         </div>
     </div>
-
-    <!--&lt;!&ndash; ALERTS &ndash;&gt;-->
-    <!--<div th:if="${param.error}" class="alert alert-danger" role="alert">-->
-    <!--Invalid username or password.-->
-    <!--</div>-->
-    <!--<div th:if="${param.logout}" class="alert alert-success" role="alert">-->
-    <!--You have been logged out.-->
-    <!--</div>-->
+    <h1>
+        <span th:text="'Errors: ' + ${message}"></span>
+    </h1>
 </form>
 </body>
 </html>

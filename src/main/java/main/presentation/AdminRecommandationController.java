@@ -50,40 +50,58 @@ public class AdminRecommandationController {//todo rethink to do this
     }
 
     @RequestMapping(value = "/recommendation", method = RequestMethod.POST, params = "action=addSelected")
-    public String addBook(@RequestParam("index") int index,
-                          @RequestParam("price") int price,
-                          @RequestParam("quantity") int quantity,
+    public String addBook(@RequestParam("index") Integer index,
+                          @RequestParam("price") Integer price,
+                          @RequestParam("quantity") Integer quantity,
                           Model model) {
+        List<String> errors = new ArrayList<>();
         Book selectedBook = null;
-        try {
-            selectedBook = recommendationService.recomendByTitle(currentTitle).stream().map(BookMapper::from).collect(Collectors.toList()).get(index);
-        } catch (GeneralSecurityException e) {
-            return "redirect:/recommendation?googleError";
-        } catch (IOException e) {
-           return "redirect:/recommendation?googleError";
+        if (index == null || price == null || quantity == null){
+            errors.add("Please fill in all the values!");
         }
-        selectedBook.setQuantity(quantity);
-        selectedBook.setPrice(price);
-
-        bookService.save(selectedBook);
+        else {
+            try {
+                selectedBook = recommendationService.recomendByTitle(currentTitle).stream().map(BookMapper::from).collect(Collectors.toList()).get(index);
+            } catch (GeneralSecurityException e) {
+                errors.add("General security exception while fetching data\n");
+            } catch (IOException e) {
+                errors.add("IO exception exception while fetching data\n");
+            }
+            if (errors.isEmpty()) {
+                selectedBook.setQuantity(quantity);
+                selectedBook.setPrice(price);
+                try {
+                    bookService.save(selectedBook);
+                } catch (Exception e) {
+                    errors.add("Error while saving the book into the DB\n");
+                }
+            }
+        }
+        model.addAttribute("message", errors.stream().collect(Collectors.joining("\n")));
         return "book_recommendation";
     }
 
     @RequestMapping(value = "/recommendation", method = RequestMethod.POST, params = "action=recommend")
-    public ModelAndView recommendBooks(@RequestParam("title") String title, Model model, HttpSession httpSession) {
-        List<Book> recommendedBooks = new ArrayList<>();
+    public String recommendBooks(@RequestParam("title") String title, Model model, HttpSession httpSession) {
+        List<Book> recommendedBooks = null;
+        List<String> errors = new ArrayList<>();
         try {
             recommendedBooks = recommendationService.recomendByTitle(title).stream().map(BookMapper::from).collect(Collectors.toList());
             currentTitle = title;
         } catch (GeneralSecurityException e) {
-            return new ModelAndView("redirect:/recommendation?googleError");
+            errors.add("General security exception while fetching data\n");
         } catch (IOException e) {
-            return new ModelAndView("redirect:/recommendation?googleError");
+            errors.add("IO exception exception while fetching data\n");
         }
-        setTemporaryIndex(recommendedBooks);
-        ModelAndView mav = new ModelAndView("book_recommendation");
-        mav.addObject("bookList", recommendedBooks);
-        return mav;
+        if (errors.isEmpty()) {
+            setTemporaryIndex(recommendedBooks);
+            model.addAttribute("bookList", recommendedBooks);
+        }
+        else{
+            model.addAttribute("message", errors.stream().collect(Collectors.joining("\n")));
+        }
+
+        return "book_recommendation";
     }
 
     private List<Book> setTemporaryIndex(List<Book> books) {//TODO refactor this. use iterators or something safer

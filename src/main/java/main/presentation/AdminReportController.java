@@ -43,7 +43,7 @@ public class AdminReportController {//TODO use an error List rather than concate
             reportType = ReportType.valueOf(type);
         }
         catch (Exception e){
-            formatedError += "no such report type exists\n";
+            formatedError += "No such report type exists\n";
         }
         Optional<ReportService> reportService = reportServiceFactory.getReportService(reportType);
         if (reportService.isPresent()){
@@ -58,10 +58,10 @@ public class AdminReportController {//TODO use an error List rather than concate
         }
 
         if (formatedError.isEmpty()){
-            System.out.println("[AdminReportController] report created!"); //TODO display this in GUI
+            model.addAttribute("message", "Report created!\n");
         }
         else{
-            System.out.println(formatedError); //TODO display this in GUI
+            model.addAttribute("message", "Report not created! Something went wrong:\n" + formatedError);
         }
         return "admin_reports";
     }
