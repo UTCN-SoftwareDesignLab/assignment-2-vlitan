@@ -23,8 +23,8 @@ import java.util.Map;
 public class LoginController {
 
     private static final Map<Role, String> roleToViewMap = ImmutableMap.of(
-            Role.ADMIN, "admin_view",
-            Role.USER, "user_books"
+            Role.ADMIN, "/admin_view",
+            Role.USER, "/user_books"
     );
 
     @Autowired
@@ -44,7 +44,7 @@ public class LoginController {
             return "redirect:/login?error";
         }
         else{
-            return roleToViewMap.get(userNotification.getResult().getRole());
+            return "redirect:" + roleToViewMap.get(userNotification.getResult().getRole());
         }
     }
 

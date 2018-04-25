@@ -1,5 +1,6 @@
 package main.model;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
@@ -14,24 +15,30 @@ public class User {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     @Column
+    @NonNull
+    @Pattern(regexp = "[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+$", message = "Invalid name")
     private String name;
     @Column
+    @Min(value = 14, message = "too young to be an employee")
+    @NonNull
     private int age;
     @Column
+    @NonNull
+    @Length(min = 3, message = "Password is too short")
     private String password;
     @Column
+    @NonNull
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public User(String name, int age, String password, Role role) {
+    public User(){}
+
+    public User(@NonNull @Pattern(regexp = "[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+$", message = "Invalid name") String name, @NonNull @Min(value = 14, message = "too young to be an employee") int age, @NonNull @Length(min = 3, message = "Password is too short") String password, @NonNull Role role) {
         this.name = name;
         this.age = age;
         this.password = password;
         this.role = role;
     }
-
-
-    public User(){}
 
     @Override
 

@@ -26,17 +26,23 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void save(User user) {
-        user.setPassword(AuthenticationServiceImpl.encodePassword(user.getPassword()));
+        String plainPassword = user.getPassword();
+        user.setPassword(AuthenticationServiceImpl.encodePassword(plainPassword));
         userRepository.save(user);
+        user.setPassword(plainPassword);
     }
 
     @Override
     public void delete(User user) {
-        userRepository.delete(user);
     }
 
     @Override
     public void deleteById(Integer id) {
-        userRepository.deleteById(id);
+        if (id.intValue()>0){
+            userRepository.deleteById(id);
+        }
+        else{
+            //tODO manage error
+        }
     }
 }

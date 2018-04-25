@@ -29,52 +29,36 @@
         <td th:text="${ user.name }">name</td>
         <td th:text="${ user.role }">role</td>
     </tr>
-    <th>
-    <td>Errors</td>
-    <th>
-    <tr th:each="error : ${ errorList }">
-        <td th:text="${ error }">errors</td>
-    </tr>
+    </tbody>
+</table>
 
-
-    <form th:action="@{/crudUsers}" method="post" class="form-horizontal col-sm-6 col-sm-offset-3">
-
-    <div class="form-group">
-        <label for="id" class="col-sm-4 control-label">Id:</label>
-        <div class="col-sm-8">
-            <input type="text" name="id" id="id" class="form-control"/>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="name" class="col-sm-4 control-label">Name:</label>
-        <div class="col-sm-8">
-            <input type="text" name="name" id="name" class="form-control"/>
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        <label for="password" class="col-sm-4 control-label">Password:</label>
-        <div class="col-sm-8">
-            <input type="text" name="password" id="password" class="form-control"/>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="age" class="col-sm-4 control-label">Age:</label>
-        <div class="col-sm-8">
-            <input type="text" name="age" id="age" class="form-control"/>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="role" class="col-sm-4 control-label">Role:</label>
-        <div class="col-sm-8">
-            <input type="text" name="role" id="role" class="form-control"/>
-        </div>
-    </div>
-
+    <form th:action="@{/crudUsers}" th:object="${user}" modelAttribute="user" method="post" class="form-horizontal col-sm-6 col-sm-offset-3">
+        <table>
+        <tr>
+            <td>Id:</td>
+            <td><input type="number" th:field="${user.id}" id="id"/></td>
+            <td th:if="${#fields.hasErrors('id')}" th:errors="${user.id}">Id Error</td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="${user.name}" /></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="${user.name}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="text" th:field="${user.password}" /></td>
+            <td th:if="${#fields.hasErrors('password')}" th:errors="${user.password}">Password Error</td>
+        </tr>
+        <tr>
+            <td>Age:</td>
+            <td><input type="number" th:field="${user.age}" /></td>
+            <td th:if="${#fields.hasErrors('age')}" th:errors="${user.age}">Age Error</td>
+        </tr>
+        <tr>
+            <td>Role:</td>
+            <td><input type="text" th:field="${user.role}"/></td>
+            <td th:if="${#fields.hasErrors('role')}" th:errors="${user.role}">Role Error</td>
+        </tr>
 
 
     <div class="form-group">
@@ -95,23 +79,9 @@
         </div>
     </div>
 
-
-    <!--&lt;!&ndash; ALERTS &ndash;&gt;-->
-    <!--<div th:if="${param.idParseError}" class="alert alert-danger" role="alert">-->
-        <!--id parse error-->
-    <!--</div>-->
-    <!--<div th:if="${param.ageParseError}" class="alert alert-danger" role="alert">-->
-        <!--age parse error-->
-    <!--</div>-->
-    <!--<div th:if="${param.roleParseError}" class="alert alert-danger" role="alert">-->
-        <!--role parse error-->
-    <!--</div>-->
-    <!--<div th:if="${param.validationError}" class="alert alert-danger" role="alert">-->
-        <!--invalid data-->
-    <!--</div>-->
-
+        </table>
 </form>
-</table>
+
 
 </body>
 </html>

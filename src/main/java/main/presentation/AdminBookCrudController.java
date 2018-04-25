@@ -10,6 +10,7 @@ import main.service.BookService;
 import main.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +23,13 @@ import java.util.List;
 public class AdminBookCrudController {
     @Autowired
     BookService bookService;
+
+    @RequestMapping(value = "admin_books", method = RequestMethod.GET)
+    public String index(Model model){
+        model.addAttribute("book", new Book());
+        return "admin_books";
+    }
+
 
     @RequestMapping(value = "/adminBooks", method = RequestMethod.POST, params = "action=save")
     public ModelAndView saveBook(@RequestParam("id") String inId,

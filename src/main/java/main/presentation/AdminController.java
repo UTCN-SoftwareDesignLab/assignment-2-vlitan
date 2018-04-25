@@ -12,27 +12,32 @@ import java.security.Principal;
 @Controller
 public class AdminController {
 
+    @RequestMapping(value = "admin_view", method = RequestMethod.GET)
+    public String index(){
+        return "admin_view";
+    }
+
     @RequestMapping(value = "/adminView", method = RequestMethod.POST, params = "redirect=toReports")
-    public ModelAndView switchToReports(Principal principal)
+    public String switchToReports()
     {
-        return new ModelAndView("admin_reports");
+        return "redirect:/admin_reports";
     }
 
     @RequestMapping(value = "/adminView", method = RequestMethod.POST, params = "redirect=toBookCrud")
-    public ModelAndView switchToBookCrud(Principal principal)
+    public String switchToBookCrud()
     {
-        return new ModelAndView("admin_books");
+        return"redirect:/admin_books";
     }
 
     @RequestMapping(value = "/adminView", method = RequestMethod.POST, params = "redirect=toUserCrud")
-    public ModelAndView switchToUserCrud(Principal principal)
+    public String switchToUserCrud()
     {
-        return new ModelAndView("crud_user");
+        return"redirect:/crud_user";
     }
 
     @RequestMapping(value = "/adminView", method = RequestMethod.POST, params = "redirect=toRecommendation")
-    public ModelAndView switchToRecommendation(Principal principal)
+    public String switchToRecommendation()
     {
-        return new ModelAndView("book_recommendation");
+        return "redirect:/book_recommendation";
     }
 }
