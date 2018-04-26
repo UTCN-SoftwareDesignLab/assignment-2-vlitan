@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="83509663-aa4b-4b1c-8368-b609284ef54b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/presentation/AdminRecommendationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/presentation/AdminRecommendationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/service/BookMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/service/BookMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/service/GoogleRecomandationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/service/GoogleRecomandationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/service/RecomandationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/service/RecommendationService.java" afterDir="false" />
-    </list>
+    <list default="true" id="83509663-aa4b-4b1c-8368-b609284ef54b" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -94,17 +88,14 @@
     <favorites_list name="assig2" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.8680203">
+    <splitter split-orientation="horizontal" split-proportion="0.54949236">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="UserServiceTest.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="UserServiceTest.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/test/java/UserServiceTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="375">
-                  <caret line="25" column="9" lean-forward="true" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
+                <state relative-caret-position="270">
+                  <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
                 </state>
               </provider>
             </entry>
@@ -113,7 +104,7 @@
             <entry file="file://$PROJECT_DIR$/src/main/java/main/service/CsvReportService.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="90">
-                  <caret line="15" column="82" lean-forward="true" selection-start-line="15" selection-start-column="82" selection-end-line="15" selection-end-column="82" />
+                  <caret line="15" column="82" selection-start-line="15" selection-start-column="82" selection-end-line="15" selection-end-column="82" />
                 </state>
               </provider>
             </entry>
@@ -122,19 +113,7 @@
             <entry file="file://$PROJECT_DIR$/src/main/java/main/service/GoogleRecomandationService.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="330">
-                  <caret line="34" column="34" lean-forward="true" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="AdminRecommendationController.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/main/presentation/AdminRecommendationController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="316">
-                  <caret line="82" column="137" lean-forward="true" selection-start-line="82" selection-start-column="137" selection-end-line="82" selection-end-column="137" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
+                  <caret line="34" column="34" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
                 </state>
               </provider>
             </entry>
@@ -143,25 +122,16 @@
             <entry file="file://$PROJECT_DIR$/src/main/java/main/service/BookService.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="195">
-                  <caret line="17" column="51" lean-forward="true" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
+                  <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="BookMapper.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="BookMapper.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/main/service/BookMapper.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="405">
-                  <caret line="32" column="34" lean-forward="true" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="RecommendationService.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/main/service/RecommendationService.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="105">
-                  <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+                  <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
                 </state>
               </provider>
             </entry>
@@ -169,8 +139,8 @@
           <file leaf-file-name="UserServiceImpl.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/main/service/UserServiceImpl.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="285">
-                  <caret line="30" column="50" lean-forward="true" selection-start-line="30" selection-start-column="50" selection-end-line="31" selection-end-column="7" />
+                <state relative-caret-position="420">
+                  <caret line="30" column="34" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
                 </state>
               </provider>
             </entry>
@@ -200,11 +170,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="crud_user.html" pinned="false" current-in-tab="false">
+          <file leaf-file-name="crud_user.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/crud_user.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="667">
-                  <caret line="82" selection-start-line="82" selection-end-line="84" selection-end-column="13" />
+                <state relative-caret-position="615">
+                  <caret line="84" column="13" lean-forward="true" selection-start-line="84" selection-start-column="13" selection-end-line="84" selection-end-column="13" />
                 </state>
               </provider>
             </entry>
@@ -212,17 +182,17 @@
           <file leaf-file-name="admin_books.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin_books.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="473">
-                  <caret line="87" selection-start-line="87" selection-end-line="89" selection-end-column="5" />
+                <state relative-caret-position="503">
+                  <caret line="89" column="5" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Book.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Book.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/main/model/Book.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="226">
-                  <caret line="36" selection-start-line="36" selection-end-line="36" />
+                  <caret line="46" selection-start-line="46" selection-end-line="46" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -233,8 +203,8 @@
           <file leaf-file-name="AdminBookCrudController.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/main/presentation/AdminBookCrudController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="368">
-                  <caret line="39" column="9" lean-forward="true" selection-start-line="33" selection-start-column="6" selection-end-line="39" selection-end-column="9" />
+                <state relative-caret-position="233">
+                  <caret line="30" selection-start-line="30" selection-end-line="30" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -245,11 +215,8 @@
           <file leaf-file-name="AdminController.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/main/presentation/AdminController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="315">
-                  <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
+                <state relative-caret-position="390">
+                  <caret line="26" selection-start-line="26" selection-end-line="26" />
                 </state>
               </provider>
             </entry>
@@ -258,7 +225,7 @@
             <entry file="file://$PROJECT_DIR$/src/main/java/main/service/BookServiceImpl.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="195">
-                  <caret line="35" column="45" lean-forward="true" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
+                  <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -687,10 +654,9 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1920" />
-    <option name="y" value="26" />
+    <option name="y" value="-1" />
     <option name="width" value="1920" />
-    <option name="height" value="1053" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -794,6 +760,21 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assig2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment-2-vlitan" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assig2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment-2-vlitan" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="assig2" type="b2602c69:ProjectViewProjectNode" />
@@ -1027,7 +1008,7 @@
       <workItem from="1524134391131" duration="16638000" />
       <workItem from="1524218858900" duration="64557000" />
       <workItem from="1524583935274" duration="2761000" />
-      <workItem from="1524650779507" duration="27895000" />
+      <workItem from="1524650779507" duration="28104000" />
     </task>
     <servers />
   </component>
@@ -1064,7 +1045,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151745000" />
+    <option name="totallyTimeSpent" value="151954000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1076,7 +1057,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="26" width="1920" height="1053" extended-state="6" />
+    <frame x="0" y="-1" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="10" />
@@ -1099,14 +1080,14 @@
       <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="bottom" id="Run" order="6" weight="0.29049677" />
       <window_info anchor="bottom" id="Spring" order="1" weight="0.32937366" />
-      <window_info anchor="bottom" id="Terminal" order="14" visible="true" weight="0.18790497" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" sideWeight="0.8763298" visible="true" weight="0.15901814" />
+      <window_info anchor="bottom" id="Terminal" order="14" visible="true" weight="0.11437566" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" sideWeight="0.8755924" visible="true" weight="0.15901814" />
       <window_info anchor="right" id="Bean Validation" order="3" weight="0.32977587" />
       <window_info id="Web" order="1" sideWeight="0.50153375" side_tool="true" weight="0.21771611" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.32829374" />
       <window_info anchor="right" id="Gradle" order="8" weight="0.32977587" />
       <window_info anchor="right" id="Theme Preview" order="2" />
-      <window_info id="Favorites" order="7" sideWeight="0.12367021" side_tool="true" visible="true" weight="0.15901814" />
+      <window_info id="Favorites" order="7" sideWeight="0.12440758" side_tool="true" visible="true" weight="0.15901814" />
       <window_info anchor="right" id="Commander" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
@@ -1261,8 +1242,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin_books.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="87" selection-start-line="87" selection-end-line="89" selection-end-column="5" />
+        <state relative-caret-position="503">
+          <caret line="89" column="5" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1279,7 +1260,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/main/service/BookServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="35" column="45" lean-forward="true" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
+          <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1288,8 +1269,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/main/presentation/AdminBookCrudController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="39" column="9" lean-forward="true" selection-start-line="33" selection-start-column="6" selection-end-line="39" selection-end-column="9" />
+        <state relative-caret-position="233">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1298,11 +1279,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/main/presentation/AdminController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="390">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
         </state>
       </provider>
     </entry>
@@ -1397,23 +1375,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/crud_user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="82" selection-start-line="82" selection-end-line="84" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/main/model/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/runner/JUnitCore.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -1496,25 +1457,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/main/service/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="30" column="50" lean-forward="true" selection-start-line="30" selection-start-column="50" selection-end-line="31" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/UserServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="9" lean-forward="true" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="420">
+          <caret line="30" column="34" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/main/service/CsvReportService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="15" column="82" lean-forward="true" selection-start-line="15" selection-start-column="82" selection-end-line="15" selection-end-column="82" />
+          <caret line="15" column="82" selection-start-line="15" selection-start-column="82" selection-end-line="15" selection-end-column="82" />
         </state>
       </provider>
     </entry>
@@ -1538,21 +1489,45 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/main/service/BookService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="17" column="51" lean-forward="true" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
+          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/main/service/GoogleRecomandationService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
-          <caret line="34" column="34" lean-forward="true" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
+          <caret line="34" column="34" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/main/service/BookMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
-          <caret line="32" column="34" lean-forward="true" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/main/model/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/crud_user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="84" column="13" lean-forward="true" selection-start-line="84" selection-start-column="13" selection-end-line="84" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/UserServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
         </state>
       </provider>
     </entry>
