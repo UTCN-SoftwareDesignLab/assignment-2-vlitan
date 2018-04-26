@@ -3,12 +3,9 @@ package main.presentation;
 import com.google.api.services.books.model.Volume;
 import main.model.Book;
 import main.model.Role;
-import main.model.User;
-import main.model.builder.BookBuilder;
 import main.service.BookMapper;
 import main.service.BookService;
-import main.service.RecomandationService;
-import main.util.Notification;
+import main.service.RecommendationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
@@ -16,16 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Controller
 public class AdminRecommendationController {//todo rethink to do this
@@ -34,7 +28,7 @@ public class AdminRecommendationController {//todo rethink to do this
     BookService bookService;
 
     @Autowired
-    RecomandationService<Volume> recommendationService;
+    RecommendationService<Volume> recommendationService;
 
     private String currentTitle;//TODO remove state
 
@@ -61,7 +55,7 @@ public class AdminRecommendationController {//todo rethink to do this
         }
         else {
             try {
-                selectedBook = recommendationService.recomendByTitle(currentTitle).stream().map(BookMapper::from).collect(Collectors.toList()).get(index);
+                selectedBook = recommendationService.recommendByTitle(currentTitle).stream().map(BookMapper::from).collect(Collectors.toList()).get(index);
             } catch (GeneralSecurityException e) {
                 errors.add("General security exception while fetching data\n");
             } catch (IOException e) {
@@ -86,7 +80,7 @@ public class AdminRecommendationController {//todo rethink to do this
         List<Book> recommendedBooks = null;
         List<String> errors = new ArrayList<>();
         try {
-            recommendedBooks = recommendationService.recomendByTitle(title).stream().map(BookMapper::from).collect(Collectors.toList());
+            recommendedBooks = recommendationService.recommendByTitle(title).stream().map(BookMapper::from).collect(Collectors.toList());
             currentTitle = title;
         } catch (GeneralSecurityException e) {
             errors.add("General security exception while fetching data\n");

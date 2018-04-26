@@ -13,17 +13,16 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service//use @Resource(name="GoogleRecomandationService") when you whanna autowire this
-public class GoogleRecomandationService implements RecomandationService<Volume> {
+public class GoogleRecomandationService implements RecommendationService<Volume> {
     /**
      * Be sure to specify the name of your application. If the application name is {@code null} or
      * blank, the application will log a warning. Suggested format is "MyCompany-ProductName/1.0".
      */
     private static final String APPLICATION_NAME = "ru/1.0";
     @Override
-    public List<Volume> recomendByTitle(String title) throws GeneralSecurityException, IOException {
+    public List<Volume> recommendByTitle(String title) throws GeneralSecurityException, IOException {
         ClientCredentials.errorIfNotSpecified();
         JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
         // Set up Books client.
