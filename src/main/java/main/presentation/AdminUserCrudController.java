@@ -4,6 +4,7 @@ import main.model.Role;
 import main.model.User;
 import main.model.builder.UserBuilder;
 import main.model.validator.UserValidator;
+import main.service.AuthenticationService;
 import main.service.AuthenticationServiceImpl;
 import main.service.UserService;
 import main.util.Notification;
@@ -29,8 +30,9 @@ import java.util.List;
 @Controller
 public class AdminUserCrudController {
     @Autowired
-    UserService userService;
-
+    private UserService userService;
+    @Autowired
+    private AuthenticationService authenticationService;
 
     @RequestMapping(value = "crud_user", method = RequestMethod.GET)
     public String index(Model model) {
@@ -43,7 +45,7 @@ public class AdminUserCrudController {
     public String saveUser(@Validated @ModelAttribute("user") User user, BindingResult bindingResult, Model model)
     {
         if (!bindingResult.hasErrors()){
-            Notification<Boolean> saveNotification = userService.save(user);
+            Notification<Boolean> saveNotification = authenticationService.register(user);
             if (saveNotification.hasErrors()){
                 model.addAttribute("message", saveNotification.getFormattedErrors());
             }

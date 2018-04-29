@@ -14,7 +14,8 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 
     @Autowired
     private UserRepository userRepository;
-
+    @Autowired
+    private UserService userService;
     @Override
     public Notification<User> loadByNameAndPassword(String username, String password) {
         String encodedPassword = encodePassword(password);
@@ -27,6 +28,24 @@ public class AuthenticationServiceImpl implements AuthenticationService{
             result.addError("username and / or password not found");
         }
         return result;
+    }
+
+    @Override
+    public Notification<Boolean> register(User user){
+        Notification<Boolean> registerNotification = new Notification<>();
+        String plainPassword = user.getPassword();
+        user.setPassword(AuthenticationServiceImpl.encodePassword(plainPassword));
+        if (userRepository.findByNameAndPassword(user.getName(), user.getPassword()).isPresent()){
+            registerNotification.addError("Already existing user with name " + user.getName() + " and same password");
+            registerNotification.setResult(Boolean.FALSE);
+        }
+        else {
+            Notification<Boolean> saveNotification = userService.save(user);
+            registerNotification.setResult(saveNotification.getResult());
+            registerNotification.addError(saveNotification.getFormattedErrors());
+        }
+        user.setPassword(plainPassword);
+        return registerNotification;
     }
 
     public static String encodePassword(String password) {//TODO add this into a separate service
@@ -46,4 +65,5 @@ public class AuthenticationServiceImpl implements AuthenticationService{
             throw new RuntimeException(ex);
         }
     }
+
 }

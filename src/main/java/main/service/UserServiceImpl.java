@@ -28,13 +28,6 @@ public class UserServiceImpl implements UserService{
     @Override
     public Notification<Boolean> save(User user) {//TODO extract register from this into AuthenticationService
         Notification<Boolean> saveNotification = new Notification<>();
-        String plainPassword = user.getPassword();
-        user.setPassword(AuthenticationServiceImpl.encodePassword(plainPassword));
-        if (userRepository.findByNameAndPassword(user.getName(), user.getPassword()).isPresent()){
-            saveNotification.addError("Already existing user with name " + user.getName() + " and same password");
-            saveNotification.setResult(Boolean.FALSE);
-        }
-        else {
             try {
                 userRepository.save(user);
                 saveNotification.setResult(Boolean.TRUE);
@@ -43,8 +36,7 @@ public class UserServiceImpl implements UserService{
                 saveNotification.addError("Something went bad while saving");
                 saveNotification.setResult(Boolean.FALSE);
             }
-        }
-        user.setPassword(plainPassword);
+
         return saveNotification;
     }
 
