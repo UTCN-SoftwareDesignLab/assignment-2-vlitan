@@ -2,6 +2,7 @@ package main.presentation;
 
 import main.model.Book;
 import main.service.BookService;
+import main.service.SellingService;
 import main.util.Notification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,8 @@ import java.util.Optional;
 public class UserBookController {
     @Autowired
     BookService bookService;
+    @Autowired
+    SellingService sellingService;
 
     @RequestMapping(value = "user_books", method = RequestMethod.GET)
     public String index(Model model){
@@ -57,7 +60,7 @@ public class UserBookController {
     {
         Notification<Boolean> sellNotification = new Notification<Boolean>();
         if (id != null) {
-            sellNotification = bookService.sellById(id);
+            sellNotification = sellingService.sellById(id, 1);
         }
         else{
             sellNotification.addError("id is null");

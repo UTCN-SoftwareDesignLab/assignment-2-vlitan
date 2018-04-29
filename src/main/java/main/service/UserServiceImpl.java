@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Notification<Boolean> save(User user) {
+    public Notification<Boolean> save(User user) {//TODO extract register from this into AuthenticationService
         Notification<Boolean> saveNotification = new Notification<>();
         String plainPassword = user.getPassword();
         user.setPassword(AuthenticationServiceImpl.encodePassword(plainPassword));

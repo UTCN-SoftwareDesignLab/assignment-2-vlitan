@@ -20,32 +20,7 @@ public class BookServiceImpl implements BookService{
     public List<Book> findAll(){
         return bookRepository.findAll();
     }
-    @Override
-    //decreases the quantity of a certain book by 1
-    public Notification<Boolean> sell(Book book){
-        return sellById(book.getId());
-    }
 
-    //decreases the quantity of a certain book by 1
-    public Notification<Boolean> sellById(int id){
-        Optional<Book> foundBook = bookRepository.findById(id);
-        Notification<Boolean> sellNotification = new Notification<>();
-        sellNotification.setResult(Boolean.FALSE);
-        if (foundBook.isPresent()){
-            Book soldBook = foundBook.get();
-            if (soldBook.getQuantity() > 0) {
-                this.save(soldBook);
-                sellNotification.setResult(Boolean.TRUE);
-            }
-            else{//not enough quantity
-                sellNotification.addError("This book is not in stock");
-            }
-        }
-        else{//book not present
-            sellNotification.addError("Book not found");
-        }
-        return sellNotification;
-    }
     @Override
     public Optional<Book> findById(Integer id){
         return bookRepository.findById(id);

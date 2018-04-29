@@ -8,8 +8,6 @@ import java.util.Optional;
 
 public interface BookService {
     public List<Book> findAll();
-    public Notification<Boolean> sell(Book book);
-    public Notification<Boolean> sellById(int id);
     public Optional<Book> findById(Integer id);
     public List<Book> findByTitle(String title);
     public List<Book> findByQuantity(int quantity);
