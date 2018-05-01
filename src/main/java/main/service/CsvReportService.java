@@ -15,7 +15,7 @@ public class CsvReportService implements ReportService {
     @Override
     public void generateReport(String name, List<Book> books) throws IOException {
         try (
-                BufferedWriter writer = Files.newBufferedWriter(Paths.get(name+".csv"));
+                BufferedWriter writer = Files.newBufferedWriter(Paths.get(name+this.getFileExtension()));
                 CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT
                         .withHeader("id", "title", "author", "genre", "price"))
         ) {
@@ -25,5 +25,10 @@ public class CsvReportService implements ReportService {
 
             csvPrinter.flush();
         }
+    }
+
+    @Override
+    public String getFileExtension() {
+        return ".csv";
     }
 }

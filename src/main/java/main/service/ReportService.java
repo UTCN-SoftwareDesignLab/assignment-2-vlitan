@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface ReportService{
     /*creates a report with a list of books*/
-    public void generateReport(String name, List<Book> books)  throws IOException;
+    void generateReport(String name, List<Book> books)  throws IOException;
+    String getFileExtension();
 }

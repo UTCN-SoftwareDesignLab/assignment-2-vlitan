@@ -50,10 +50,15 @@ public class PdfReportService implements ReportService {
         contentStream.close();
 
         //Saving the document
-        document.save(new File(name + ".pdf"));
+        document.save(new File(name + getFileExtension()));
 
         //Closing the document
         document.close();
+    }
+
+    @Override
+    public String getFileExtension() {
+        return ".pdf";
     }
 
 }
